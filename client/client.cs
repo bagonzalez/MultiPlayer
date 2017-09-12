@@ -61,7 +61,7 @@ namespace ServiceMultiGame
             string room=client.GetRoom();
             if (room == "")
             {
-                client.CreateRoom("banana");
+                room=client.CreateRoom("banana");
             }
 
             client.PlayGame(player1, room);
@@ -78,24 +78,35 @@ namespace ServiceMultiGame
             Console.WriteLine("room" +room);
 
 
-            client.AddScore(200, player1);
-            client.RemoveScore(500, player1);
+            
+            
 
+            
+            ConsoleKeyInfo keyinfo;
             do
             {
-                while (!Console.KeyAvailable)
+                keyinfo = Console.ReadKey();
+                if (keyinfo.Key == ConsoleKey.UpArrow)
                 {
-                    if (Console.ReadKey(true).Key == ConsoleKey.UpArrow)
-                    {
-                        client.KeyUp(player1);
-                    }
-
-                    if (Console.ReadKey(true).Key == ConsoleKey.DownArrow)
-                    {
-                        client.KeyDown(player1);
-                    }
+                    client.KeyUp(player1);
                 }
-            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+
+                if (keyinfo.Key == ConsoleKey.DownArrow)
+                {
+                    client.KeyDown(player1);
+                }
+
+                if (keyinfo.Key == ConsoleKey.A)
+                {
+                    client.AddScore(5, player1);
+                }
+
+                if (keyinfo.Key == ConsoleKey.R)
+                {
+                    client.RemoveScore(5, player1);
+                }
+            }
+            while (keyinfo.Key != ConsoleKey.Escape);
 
             Console.ReadLine();
 

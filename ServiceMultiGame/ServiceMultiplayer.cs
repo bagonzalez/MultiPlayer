@@ -63,7 +63,7 @@ namespace ServiceMultiGame
                 if (jugador.id == token)
                 {
                     jugador.score += n;
-                    Callback.ResultScore(jugador.score, token);
+                    MSGScoreAllClient(jugador.score, token);
                 }
             }
         }
@@ -171,8 +171,16 @@ namespace ServiceMultiGame
                 if (jugador.id == token)
                 {
                     jugador.score -= n;
-                    Callback.ResultScore(jugador.score, token);
+                    MSGScoreAllClient(jugador.score, token);
                 }
+            }
+        }
+
+        public void MSGScoreAllClient(double n, string token)
+        {
+            foreach (IMultiplayerCallback callback in ServiceMultiplayer.clientList)
+            {
+                callback.ResultScore(n, token);
             }
         }
 
@@ -202,7 +210,7 @@ namespace ServiceMultiGame
             {               
                 callback.KeyUp(token);
             }
-        }
+        }     
 
         public void KeyDown(string token)
         {
