@@ -75,10 +75,7 @@ namespace ServiceMultiGame
 
             // string room = client.GetRoom();
 
-            Console.WriteLine("room" +room);
-
-
-            
+            Console.WriteLine("room" +room);      
             
 
             
@@ -108,7 +105,7 @@ namespace ServiceMultiGame
             }
             while (keyinfo.Key != ConsoleKey.Escape);
 
-            Console.ReadLine();
+            
 
             //Closing the client gracefully closes the connection and cleans up resources
             client.Close();
