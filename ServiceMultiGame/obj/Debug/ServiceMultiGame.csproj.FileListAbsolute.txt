@@ -1,6 +1,0 @@
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\ServiceMultiGame\bin\Debug\ServiceMultiGame.dll
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\ServiceMultiGame\bin\Debug\ServiceMultiGame.pdb
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\ServiceMultiGame\obj\Debug\ServiceMultiGame.csproj.CoreCompileInputs.cache
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\ServiceMultiGame\obj\Debug\ServiceMultiGame.dll
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\ServiceMultiGame\obj\Debug\ServiceMultiGame.pdb
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\ServiceMultiGame\obj\Debug\ServiceMultiGame.csprojResolveAssemblyReference.cache

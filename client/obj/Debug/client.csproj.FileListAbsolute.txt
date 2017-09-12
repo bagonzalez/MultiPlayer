@@ -1,7 +1,0 @@
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\client\bin\client.exe.config
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\client\bin\client.exe
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\client\bin\client.pdb
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\client\obj\Debug\client.csproj.CoreCompileInputs.cache
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\client\obj\Debug\client.exe
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\client\obj\Debug\client.pdb
-C:\Users\bgon4224\Downloads\WF_WCF_Samples-master\WF_WCF_Samples-master\WCF\Basic\Contract\Service\Duplex\CS\client\obj\Debug\client.csprojResolveAssemblyReference.cache
