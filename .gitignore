@@ -25,3 +25,7 @@
 *.log
 *.sql
 *.sqlite
+
+.vs/MultiPlayer/
+bin/
+obj/
