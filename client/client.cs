@@ -54,8 +54,9 @@ namespace ServiceMultiGame
 
             client.Register();
 
+            string name= Console.ReadLine();
 
-            string  player1=client.RegisterUser("Bruno");
+            string  player1=client.RegisterUser(name);
             
             
             string room=client.GetRoom();

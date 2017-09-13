@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.Xml.Linq;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace ServiceMultiGame
 {
@@ -56,6 +59,22 @@ namespace ServiceMultiGame
         private static List<Room> listRoom = new List<Room>();
         private static List<IMultiplayerCallback> clientList = new List<IMultiplayerCallback>();
 
+
+        ServiceMultiplayer()
+        {
+            string fileName = @"C:\temp\Jugadores.xml";
+
+            /*if (File.Exists(fileName))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Jugador>));
+                using (FileStream stream = File.OpenRead(fileName))
+                {
+                    List<Jugador> dezerializedList = (List<Jugador>)serializer.Deserialize(stream);
+                    ServiceMultiplayer.listJugadores = dezerializedList;
+                }
+            }*/            
+        }
+
         public void AddScore(double n, string token)
         {
             foreach (Jugador jugador in ServiceMultiplayer.listJugadores)
@@ -107,6 +126,19 @@ namespace ServiceMultiGame
             }
         }
 
+        public string GetJugador(string name)
+        {
+            foreach (Jugador jugador in ServiceMultiplayer.listJugadores)
+            {
+                if (jugador.name == name)
+                {
+                    return jugador.name;
+                }
+            }
+
+            return null;
+        }
+
         public void PlayGame(string token, string room)
         {
             foreach (Room roomPlay in ServiceMultiplayer.listRoom)
@@ -140,28 +172,43 @@ namespace ServiceMultiGame
 
         public string RegisterUser(string user)
         {
-            Jugador jugador = new Jugador();
+            string idUser = GetJugador(user);
 
-            Random rnd = new Random();
-            string posibles = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            int longitud = posibles.Length;
-            char letra;
-            int longitudnuevacadena = 5;
-            string nuevacadena = "";
-            for (int i = 0; i < longitudnuevacadena; i++)                
-            {                
-                letra = posibles[rnd.Next(longitud)];                
-                nuevacadena += letra.ToString();                
+            if (idUser == null)
+            {
+                Jugador jugador = new Jugador();
+
+                Random rnd = new Random();
+                string posibles = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+                int longitud = posibles.Length;
+                char letra;
+                int longitudnuevacadena = 5;
+                string nuevacadena = "";
+                for (int i = 0; i < longitudnuevacadena; i++)
+                {
+                    letra = posibles[rnd.Next(longitud)];
+                    nuevacadena += letra.ToString();
+                }
+
+                jugador.id = nuevacadena;
+                jugador.name = user;
+                jugador.score = 0;
+
+                ServiceMultiplayer.listJugadores.Add(jugador);
+                Callback.ResultMsg("Jugador creado: " + jugador.name);
+
+                XDocument xml = new XDocument(new XElement("Root",
+                                from p in ServiceMultiplayer.listJugadores
+                                select new XElement("Jugador", (XElement)p)));
+
+                xml.Save(@"C:\temp\Jugadores.xml");
+                return jugador.id;
+
             }
-
-            jugador.id = nuevacadena; 
-            jugador.name = user;
-            jugador.score = 0;
-
-            ServiceMultiplayer.listJugadores.Add(jugador);
-            Callback.ResultMsg("Jugador creado: "+ jugador.name);
-
-            return jugador.id;
+            else
+            {
+                return idUser;
+            }            
         }
 
         public void RemoveScore(double n, string token)
@@ -244,6 +291,14 @@ namespace ServiceMultiGame
 
         public Jugador() { }
 
+        public static explicit operator XElement(Jugador v)
+        {
+            XElement xml = new XElement("Jugador",
+              new XAttribute("id", v.id),
+                new XAttribute("name", v.name),
+                new XAttribute("score", v.score));
+            return xml;
+        }
     }
 
     public class Room
